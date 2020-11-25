@@ -1,5 +1,5 @@
 # Tetris-v2
-# Ce am facut pana acum:
+# Ce am facut pana acum Patch_00:
 Forma Launcher care are butoanele Start(ce porneste jocul in sine-adica clasa Game), Instructions(care va porni o fereastra cu niste 
 instructiuni-inca nu l-am implementat) si Exit ce iese din aplicatie.
 
