@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Linie.cs" />
     <Compile Include="Patrat.cs" />
+    <Compile Include="Patru.cs" />
     <Compile Include="Piesa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
