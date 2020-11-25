@@ -11,4 +11,4 @@ In forma Game, tabla de sah am facut-o printr-un tableLayoutPanel, iar peste fie
 Logica pe care ma bazez, este ca atunci cand initializez o pieza, colorez patratelele corespunzatoare cu rosu, iar cand o mut,
 o colorez cu culoarea tabelului(albastru)-ca si cum as sterge-o din pozitia initiala, si o recolorez in pozitia urmatoare
 In forma Game mai am niste componente care semnifica scorul si piesa urmatoare(neimplementate inca) si butonul de Play care 
-atunci cand se apasa, se alege o piesa curenta cu functia generare piesa random, si porneste timerul setat la o secunda.
+atunci cand se apasa, se genereaza piesa random, si porneste timerul setat la o secunda.
