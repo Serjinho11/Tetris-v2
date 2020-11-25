@@ -49,20 +49,23 @@ namespace Tetris
             //linie.mutaJos(this);
 
             piesa.mutaJos(this);
+
+
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
 
             Random rd = new Random();
-            nrRand = rd.Next(1, 5);
+            nrRand = rd.Next(1, 6);//genereaza un nr random intre 1 si 5
 
             if (nrRand == 1)
             {
                 piesa = new Patrat();
                 piesa.pozInit(this);
             }
-            else if(nrRand==2){
+            else if (nrRand == 2)
+            {
                 piesa = new Linie();
                 piesa.pozInit(this);
             }
@@ -73,7 +76,12 @@ namespace Tetris
             }
             else if (nrRand == 4)
             {
-                piesa= new L();
+                piesa = new L();
+                piesa.pozInit(this);
+            }
+            else
+            {
+                piesa = new Patru();
                 piesa.pozInit(this);
             }
 
