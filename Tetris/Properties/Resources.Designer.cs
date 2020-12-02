@@ -173,6 +173,26 @@ namespace Tetris.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tetris_Launcher {
+            get {
+                object obj = ResourceManager.GetObject("Tetris Launcher", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tetris_Launcher2_0 {
+            get {
+                object obj = ResourceManager.GetObject("Tetris Launcher2.0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tetris_v2 {
             get {
                 object obj = ResourceManager.GetObject("tetris v2", resourceCulture);

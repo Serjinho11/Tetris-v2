@@ -239,6 +239,9 @@
             this.lblScor = new System.Windows.Forms.Label();
             this.label201 = new System.Windows.Forms.Label();
             this.label202 = new System.Windows.Forms.Label();
+            this.btnDreapta = new System.Windows.Forms.Button();
+            this.btnStanga = new System.Windows.Forms.Button();
+            this.lblVerifMat = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -254,6 +257,7 @@
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnBack.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             // 
             // tableLayoutPanel1
             // 
@@ -492,7 +496,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(256, 423);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -2328,7 +2331,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // btnPlay
@@ -2340,6 +2343,7 @@
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            this.btnPlay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             // 
             // lblScor
             // 
@@ -2374,12 +2378,42 @@
             this.label202.Text = "Urmatoarea piesa:";
             this.label202.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnDreapta
+            // 
+            this.btnDreapta.Location = new System.Drawing.Point(501, 160);
+            this.btnDreapta.Name = "btnDreapta";
+            this.btnDreapta.Size = new System.Drawing.Size(55, 26);
+            this.btnDreapta.TabIndex = 200;
+            this.btnDreapta.Text = "->";
+            this.btnDreapta.UseVisualStyleBackColor = true;
+            this.btnDreapta.Click += new System.EventHandler(this.btnDreapta_Click);
+            // 
+            // btnStanga
+            // 
+            this.btnStanga.Location = new System.Drawing.Point(447, 160);
+            this.btnStanga.Name = "btnStanga";
+            this.btnStanga.Size = new System.Drawing.Size(48, 26);
+            this.btnStanga.TabIndex = 201;
+            this.btnStanga.Text = "<-";
+            this.btnStanga.UseVisualStyleBackColor = true;
+            this.btnStanga.Click += new System.EventHandler(this.btnStanga_Click);
+            // 
+            // lblVerifMat
+            // 
+            this.lblVerifMat.BackColor = System.Drawing.Color.MintCream;
+            this.lblVerifMat.Location = new System.Drawing.Point(533, 73);
+            this.lblVerifMat.Name = "lblVerifMat";
+            this.lblVerifMat.Size = new System.Drawing.Size(66, 47);
+            this.lblVerifMat.TabIndex = 202;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
             this.ClientSize = new System.Drawing.Size(763, 633);
+            this.Controls.Add(this.lblVerifMat);
+            this.Controls.Add(this.btnStanga);
             this.Controls.Add(this.label202);
             this.Controls.Add(this.label201);
             this.Controls.Add(this.lblScor);
@@ -2389,8 +2423,10 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.btnDreapta);
             this.Name = "Game";
             this.Text = "Game";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -2607,10 +2643,13 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Label lblScor;
         private System.Windows.Forms.Label label201;
         private System.Windows.Forms.Label label202;
+        public System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnDreapta;
+        private System.Windows.Forms.Button btnStanga;
+        private System.Windows.Forms.Label lblVerifMat;
     }
 }

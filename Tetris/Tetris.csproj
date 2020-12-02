@@ -134,5 +134,11 @@
   <ItemGroup>
     <None Include="Resources\start2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tetris Launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tetris Launcher2.0.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
