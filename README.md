@@ -1,5 +1,5 @@
 # Tetris-v2
-# Ce am facut pana acum Patch_1:
+# Updates Patch_1:
 
 Am facut update la interfata grafica a launcher-ului;
 
