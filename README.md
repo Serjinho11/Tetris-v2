@@ -1,5 +1,5 @@
 # Tetris-v2
-# Ce am facut pana acum Patch_2:
+# Updates Patch_2:
 am facut ca atunci cand piesele ajung jos sa se opreasca si sa se spawneze o piesa noua
 
 acea piesa noua se duce si ea in jos si tot asa
