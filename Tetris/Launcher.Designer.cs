@@ -30,8 +30,8 @@
         {
             this.btnExit = new System.Windows.Forms.Button();
             this.btnStart1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +48,7 @@
             // btnStart1
             // 
             this.btnStart1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStart1.Location = new System.Drawing.Point(289, 471);
+            this.btnStart1.Location = new System.Drawing.Point(289, 410);
             this.btnStart1.Name = "btnStart1";
             this.btnStart1.Size = new System.Drawing.Size(96, 38);
             this.btnStart1.TabIndex = 3;
@@ -56,26 +56,26 @@
             this.btnStart1.UseVisualStyleBackColor = true;
             this.btnStart1.Click += new System.EventHandler(this.btnStart1_Click);
             // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Help;
+            this.button1.Location = new System.Drawing.Point(289, 454);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 38);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Instructions";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::Tetris.Properties.Resources.pinterest_board_photo;
+            this.pictureBox1.Image = global::Tetris.Properties.Resources.Tetris_Launcher2_0;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(678, 689);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Help;
-            this.button1.Location = new System.Drawing.Point(289, 515);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 38);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Instructions";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Launcher
             // 
