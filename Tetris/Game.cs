@@ -15,16 +15,12 @@ namespace Tetris
     {
         Launcher lnc;
         Piesa piesa;
-
-
-
+        public int scor = 0;
         public int[,] matrice = new int[12, 22]; // toate elementele sunt initializate cu 0
-
-
-
         Random rd = new Random();
-
         int nrRand;
+
+
 
         public Game(Launcher launcher)
         {
@@ -37,12 +33,6 @@ namespace Tetris
 
         public Game() { }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            lnc.Show();
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -53,15 +43,21 @@ namespace Tetris
         private void btnPlay_Click(object sender, EventArgs e)
         {
             generarePiesaRandom();
+
+
             piesa.pozInit(this);
             timer1.Start();
 
+            btnPlay.Enabled = false;
         }
 
 
 
         public void generarePiesaRandom()
         {
+            /*---------------------------------------------------------------------------
+                 DESCRIPTION: - va genera la intamplare o piesa din cele 5.
+            ---------------------------------------------------------------------------*/
 
             nrRand = rd.Next(1, 6);//genereaza un nr random intre 1 si 5
 
@@ -94,6 +90,9 @@ namespace Tetris
 
         public void drawTableBorder()
         {
+            /*---------------------------------------------------------------------------
+                 DESCRIPTION: - va desena conturul tabei de joc.
+            ---------------------------------------------------------------------------*/
             //pt partea de jos si sus:
             for (int i = 0; i < 12; i++)
             {
@@ -121,20 +120,36 @@ namespace Tetris
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
 
+
             if (e.KeyCode == Keys.Right)
             {
                 piesa.mutaDreapta(this);
             }
+            if (e.KeyCode == Keys.Left)
+            {
+                piesa.mutaStanga(this);
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                piesa.RotirePiesa(this);
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                piesa.mutaJos(this);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Hide();
+                lnc.Show();
+            }
         }
 
-        private void btnStanga_Click(object sender, EventArgs e)
-        {
-            piesa.mutaStanga(this);
-        }
 
-        private void btnDreapta_Click(object sender, EventArgs e)
+
+        private void label267_Click(object sender, EventArgs e)
         {
-            piesa.mutaDreapta(this);
+            this.Hide();
+            lnc.Show();
         }
     }
 }

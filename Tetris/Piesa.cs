@@ -17,72 +17,57 @@ namespace Tetris
         protected int x4, y4;
 
 
+
         public void pozInit(Game game)
         {
             /*---------------------------------------------------------------------------
              DESCRIPTION: - va pune in matrice la coordonatelei piesei valoarea 1, iar apoi va cauta
-                            in matrice unde este valoarea 1, si o va colora
-                          - pe scurt, va desena piesa in pozitia initiala
+                            in matrice unde este valoarea 1, si o va colora.
+                          - pe scurt, va desena piesa in pozitia initiala.
             ---------------------------------------------------------------------------*/
 
 
-            game.matrice[x1, y1] = 1;
-            game.matrice[x2, y2] = 1;
-            game.matrice[x3, y3] = 1;
-            game.matrice[x4, y4] = 1;
+            ColoreazaPiesaCurenta(game);
 
-            for (int i = 1; i < game.matrice.GetLength(0) - 1; i++)
-            {
-                for (int j = 1; j < game.matrice.GetLength(1) - 1; j++)
-                {
-                    if (game.matrice[i, j] == 1)
-                        game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Red;
-                }
-            }
 
         }
 
 
+
         public void mutaJos(Game game)
         {
+            /*---------------------------------------------------------------------------
+                 DESCRIPTION: - va verifica daca urmatoarea pozitie de jos a piesei este libera,
+                                iar apoi va sterge piesa din pozitia curenta si o va desena cu 
+                                o pozitie mai jos. In caz ca pozitia urmatoare este ocupata, piesa
+                                se va opri din coborat, si se va genera urmatoarea piesa
+            ---------------------------------------------------------------------------*/
 
-            //stergerea cubului curent(adica il coloram cu albastru)
+            //punem 0 in matrice unde vrem sa stergem piesa curenta
 
             game.matrice[x1, y1] = 0;
             game.matrice[x2, y2] = 0;
             game.matrice[x3, y3] = 0;
             game.matrice[x4, y4] = 0;
 
+
             if (verificaUrmPozitieJos(game))
             {
+
+
                 //cauta in matrice unde e 0 si coloreaza albastru
-                for (int i = 1; i < game.matrice.GetLength(0) - 1; i++)
-                {
-                    for (int j = 1; j < game.matrice.GetLength(1) - 1; j++)
-                    {
-                        if (game.matrice[i, j] == 0)
-                            game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Blue;
-                    }
-                }
+                StergePiesaCurentaV2(game);
 
                 //mutam cu un rand mai jos
                 y1++; y2++; y3++; y4++;
 
                 // si coloram pe urmatoarea pozitie
-                game.matrice[x1, y1] = 1;
-                game.matrice[x2, y2] = 1;
-                game.matrice[x3, y3] = 1;
-                game.matrice[x4, y4] = 1;
 
-                for (int i = 1; i < game.matrice.GetLength(0) - 1; i++)
-                {
-                    for (int j = 1; j < game.matrice.GetLength(1) - 1; j++)
-                    {
-                        if (game.matrice[i, j] == 1)
-                            game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Red;
-                    }
-                }
+                ColoreazaPiesaCurenta(game);
 
+                game.scor += 1;
+
+                game.lblScor.Text = game.scor.ToString();
 
 
             }
@@ -99,83 +84,72 @@ namespace Tetris
             }
         }
 
-
         public void mutaDreapta(Game game)
         {
+            /*---------------------------------------------------------------------------
+                 DESCRIPTION: - va verifica daca pozitia din dreapta piesei este libera,
+                                iar apoi va sterge piesa din pozitia curenta si o va desena cu 
+                                o pozitie mai in dreapta.
+            ---------------------------------------------------------------------------*/
 
             //stergerea cubului curent(adica il coloram cu albastru)
+           
             game.matrice[x1, y1] = 0;
             game.matrice[x2, y2] = 0;
             game.matrice[x3, y3] = 0;
             game.matrice[x4, y4] = 0;
 
-            for (int i = 1; i < game.matrice.GetLength(0) - 1; i++)
+
+            if (verificaUrmPozitieDreapta(game))
             {
-                for (int j = 1; j < game.matrice.GetLength(1) - 1; j++)
-                {
-                    if (game.matrice[i, j] == 0)
-                        game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Blue;
-                }
-            }
+                StergePiesaCurentaV2(game);
 
-            //mutam cu un rand mai jos
-            x1++; x2++; x3++; x4++;
+                //mutam cu un rand mai jos
+                x1++; x2++; x3++; x4++;
 
-            // si coloram pe urmatoarea pozitie
-            game.matrice[x1, y1] = 1;
-            game.matrice[x2, y2] = 1;
-            game.matrice[x3, y3] = 1;
-            game.matrice[x4, y4] = 1;
-
-            for (int i = 1; i < game.matrice.GetLength(0) - 1; i++)
-            {
-                for (int j = 1; j < game.matrice.GetLength(1) - 1; j++)
-                {
-                    if (game.matrice[i, j] == 1)
-                        game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Red;
-                }
+                // si coloram pe urmatoarea pozitie
+                ColoreazaPiesaCurenta(game);
             }
         }
-
 
         public void mutaStanga(Game game)
         {
+            /*---------------------------------------------------------------------------
+                 DESCRIPTION: - va verifica daca pozitia din stanga piesei este libera,
+                                iar apoi va sterge piesa din pozitia curenta si o va desena cu 
+                                o pozitie mai in stanga.
+            ---------------------------------------------------------------------------*/
+            
             game.matrice[x1, y1] = 0;
             game.matrice[x2, y2] = 0;
             game.matrice[x3, y3] = 0;
             game.matrice[x4, y4] = 0;
 
-            for (int i = 1; i < game.matrice.GetLength(0) - 1; i++)
+
+            if (verificaUrmPozitieStanga(game))
             {
-                for (int j = 1; j < game.matrice.GetLength(1) - 1; j++)
-                {
-                    if (game.matrice[i, j] == 0)
-                        game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Blue;
-                }
-            }
+                StergePiesaCurentaV2(game);
 
-            //mutam cu un rand mai jos
-            x1--; x2--; x3--; x4--;
+                //mutam cu un rand mai jos
+                x1--; x2--; x3--; x4--;
 
-            // si coloram pe urmatoarea pozitie
-            game.matrice[x1, y1] = 1;
-            game.matrice[x2, y2] = 1;
-            game.matrice[x3, y3] = 1;
-            game.matrice[x4, y4] = 1;
+                // si coloram pe urmatoarea pozitie
 
-            for (int i = 1; i < game.matrice.GetLength(0) - 1; i++)
-            {
-                for (int j = 1; j < game.matrice.GetLength(1) - 1; j++)
-                {
-                    if (game.matrice[i, j] == 1)
-                        game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Red;
-                }
+                ColoreazaPiesaCurenta(game);
             }
         }
+
 
 
         public bool verificaUrmPozitieJos(Game game)
         {
+            /*---------------------------------------------------------------------------
+                 DESCRIPTION: - va verifica daca urmatoarea pozitie de jos a piesei este 
+                                libera.
+
+                 Return:       - va returna true daca urm. pozitie este libera, iar in caz
+                                 contrat false
+            ---------------------------------------------------------------------------*/
             bool eLiber = false;
 
             if (game.matrice[x1, y1 + 1] == 0 &&
@@ -190,7 +164,120 @@ namespace Tetris
             return eLiber;
         }
 
-        public void urmPiesa(Game game) { }
+        public bool verificaUrmPozitieDreapta(Game game)
+        {
+            /*---------------------------------------------------------------------------
+                 DESCRIPTION: - va verifica daca pozitia din dreapta piesei este libera.
+
+                 Return:       - va returna true daca urm. pozitie este libera, iar in caz
+                                 contrat false
+            ---------------------------------------------------------------------------*/
+            bool eLiber = false;
+
+            if (game.matrice[x1 + 1, y1] == 0 &&
+                game.matrice[x2 + 1, y2] == 0 &&
+                game.matrice[x3 + 1, y3] == 0 &&
+                game.matrice[x4 + 1, y4] == 0)
+            {
+                eLiber = true;
+            }
+            return eLiber;
+        }
+
+        public bool verificaUrmPozitieStanga(Game game)
+        {
+            /*---------------------------------------------------------------------------
+                 DESCRIPTION: - va verifica daca pozitia din stanga piesei este libera.
+
+                 Return:       - va returna true daca urm. pozitie este libera, iar in caz
+                                 contrat false
+            ---------------------------------------------------------------------------*/
+            bool eLiber = false;
+
+            if (game.matrice[x1 - 1, y1] == 0 &&
+                game.matrice[x2 - 1, y2] == 0 &&
+                game.matrice[x3 - 1, y3] == 0 &&
+                game.matrice[x4 - 1, y4] == 0)
+            {
+                eLiber = true;
+            }
+            return eLiber;
+        }
+
+
+
+        public void StergePiesaCurenta(Game game)
+        {
+            game.matrice[x1, y1] = 0;
+            game.matrice[x2, y2] = 0;
+            game.matrice[x3, y3] = 0;
+            game.matrice[x4, y4] = 0;
+
+            for (int i = 1; i < game.matrice.GetLength(0) - 1; i++)
+            {
+                for (int j = 1; j < game.matrice.GetLength(1) - 1; j++)
+                {
+                    if (game.matrice[i, j] == 0)
+                        game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Blue;
+                }
+            }
+
+        }
+
+        public void ColoreazaPiesaCurenta(Game game)
+        {
+
+            game.matrice[x1, y1] = 1;
+            game.matrice[x2, y2] = 1;
+            game.matrice[x3, y3] = 1;
+            game.matrice[x4, y4] = 1;
+
+            for (int i = 1; i < game.matrice.GetLength(0) - 1; i++)
+            {
+                for (int j = 1; j < game.matrice.GetLength(1) - 1; j++)
+                {
+                    if (game.matrice[i, j] == 1)
+                        game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Red;
+                }
+            }
+        }
+
+        public void StergePiesaCurentaV2(Game game)
+        {
+
+            for (int i = 1; i < game.matrice.GetLength(0) - 1; i++)
+            {
+                for (int j = 1; j < game.matrice.GetLength(1) - 1; j++)
+                {
+                    if (game.matrice[i, j] == 0)
+                        game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Blue;
+                }
+            }
+        }
+
+
+
+        public virtual void rotirePiesaInPoz2(Game game) { }
+
+        public virtual void rotirePiesaInPoz1(Game game) { }
+
+        public virtual void rotirePiesaInPoz3(Game game) { }
+
+        public virtual void rotirePiesaInPoz4(Game game) { }
+
+        public virtual void RotirePiesa(Game game) { }
+
+
+
+        public virtual bool VerificaDacaPoz2ELibera(Game game) { return false; }
+
+        public virtual bool VerificaDacaPoz1ELibera(Game game) { return false; }
+
+        public virtual bool VerificaDacaPoz3ELibera(Game game) { return false; }
+
+        public virtual bool VerificaDacaPoz4ELibera(Game game) { return false; }
+
+
 
     }
 

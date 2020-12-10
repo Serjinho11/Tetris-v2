@@ -10,9 +10,6 @@ namespace Tetris
 {
     class Patrat : Piesa
     {
-        //coordonatele fiecarei celule
-
-
 
         public Patrat()
         {
@@ -21,6 +18,8 @@ namespace Tetris
             x3 = 6; y3 = 1;//a 3a celula din patrat                     3 4
             x4 = 6; y4 = 2;//a 4a celula din patrat
         }
+
+
 
     }
 }
