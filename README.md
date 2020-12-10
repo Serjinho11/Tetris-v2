@@ -1,7 +1,7 @@
 # Tetris-v2
 # Updates Patch_3:
 
-Am facut ca piesa curenta sa nu intre (din laterale) in celelalte piese
+Am facut verificarile ca atunci cand o piesa se muta stanga, dreapta sau jos, pozitia sa fie libera
 
 Am facut ca butonul de play sa poate fi apasat doar o data
 
