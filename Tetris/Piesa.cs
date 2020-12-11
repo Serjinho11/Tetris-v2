@@ -17,8 +17,7 @@ namespace Tetris
         protected int x4, y4;
 
 
-
-        public void pozInit(Game game)
+        public void PozInit(Game game)
         {
             /*---------------------------------------------------------------------------
              DESCRIPTION: - va pune in matrice la coordonatelei piesei valoarea 1, iar apoi va cauta
@@ -69,19 +68,23 @@ namespace Tetris
 
                 game.lblScor.Text = game.scor.ToString();
 
+                
+
 
             }
             else
             {
+                
                 game.timer1.Stop();
 
                 game.generarePiesaRandom();
 
-                pozInit(game);
+                PozInit(game);
 
                 game.timer1.Start();
 
             }
+            
         }
 
         public void mutaDreapta(Game game)
@@ -93,7 +96,7 @@ namespace Tetris
             ---------------------------------------------------------------------------*/
 
             //stergerea cubului curent(adica il coloram cu albastru)
-           
+
             game.matrice[x1, y1] = 0;
             game.matrice[x2, y2] = 0;
             game.matrice[x3, y3] = 0;
@@ -119,7 +122,7 @@ namespace Tetris
                                 iar apoi va sterge piesa din pozitia curenta si o va desena cu 
                                 o pozitie mai in stanga.
             ---------------------------------------------------------------------------*/
-            
+
             game.matrice[x1, y1] = 0;
             game.matrice[x2, y2] = 0;
             game.matrice[x3, y3] = 0;
@@ -240,6 +243,7 @@ namespace Tetris
                         game.tableLayoutPanel1.GetControlFromPosition(i, j).BackColor = Color.Red;
                 }
             }
+
         }
 
         public void StergePiesaCurentaV2(Game game)

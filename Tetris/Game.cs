@@ -15,8 +15,10 @@ namespace Tetris
     {
         Launcher lnc;
         Piesa piesa;
+
         public int scor = 0;
         public int[,] matrice = new int[12, 22]; // toate elementele sunt initializate cu 0
+
         Random rd = new Random();
         int nrRand;
 
@@ -37,15 +39,13 @@ namespace Tetris
         {
 
             piesa.mutaJos(this);
-
+            
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
             generarePiesaRandom();
 
-
-            piesa.pozInit(this);
             timer1.Start();
 
             btnPlay.Enabled = false;
@@ -59,32 +59,42 @@ namespace Tetris
                  DESCRIPTION: - va genera la intamplare o piesa din cele 5.
             ---------------------------------------------------------------------------*/
 
-            nrRand = rd.Next(1, 6);//genereaza un nr random intre 1 si 5
+            nrRand = rd.Next(1, 8);//genereaza un nr random intre 1 si 7
 
             if (nrRand == 1)
             {
                 piesa = new Patrat();
-                piesa.pozInit(this);
+                piesa.PozInit(this);
             }
             else if (nrRand == 2)
             {
                 piesa = new Linie();
-                piesa.pozInit(this);
+                piesa.PozInit(this);
             }
             else if (nrRand == 3)
             {
                 piesa = new T();
-                piesa.pozInit(this);
+                piesa.PozInit(this);
             }
             else if (nrRand == 4)
             {
                 piesa = new L();
-                piesa.pozInit(this);
+                piesa.PozInit(this);
+            }
+            else if (nrRand == 5)
+            {
+                piesa = new Patru();
+                piesa.PozInit(this);
+            }
+            else if (nrRand == 6)
+            {
+                piesa = new J();
+                piesa.PozInit(this);
             }
             else
             {
-                piesa = new Patru();
-                piesa.pozInit(this);
+                piesa = new PatruIntors();
+                piesa.PozInit(this);
             }
         }
 
@@ -151,5 +161,7 @@ namespace Tetris
             this.Hide();
             lnc.Show();
         }
+
+       
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="Game.Designer.cs">
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
+    <Compile Include="J.cs" />
     <Compile Include="L.cs" />
     <Compile Include="Launcher.cs">
       <SubType>Form</SubType>
@@ -62,6 +63,7 @@
     <Compile Include="Linie.cs" />
     <Compile Include="Patrat.cs" />
     <Compile Include="Patru.cs" />
+    <Compile Include="PatruIntors.cs" />
     <Compile Include="Piesa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
