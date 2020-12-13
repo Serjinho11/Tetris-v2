@@ -15,12 +15,13 @@ namespace Tetris
     {
         Launcher lnc;
         Piesa piesa;
+        Tabel tabel;
 
         public int scor = 0;
-        public int[,] matrice = new int[12, 22]; // toate elementele sunt initializate cu 0
 
         Random rd = new Random();
         int nrRand;
+        public int[,] matrice = new int[12, 22]; // toate elementele sunt initializate cu 0
 
 
 
@@ -29,8 +30,9 @@ namespace Tetris
 
             InitializeComponent();
             lnc = launcher;
+            tabel = new Tabel();
+            tabel.DrawTableBorder(this);
 
-            drawTableBorder();
         }
 
         public Game() { }
@@ -38,13 +40,47 @@ namespace Tetris
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            piesa.mutaJos(this);
-            
+            piesa.MutaJos(this);
+
+            if (piesa.stateOfPiece == false)
+            {
+                tabel.StergeLinieDacaECompleta(this, piesa);
+            }
+
+            if (tabel.GameOver(this))
+            {
+                //timer1.Interval = 100000000;
+                timer1.Enabled = false;
+                MessageBox.Show("GAME OVER \n Scorul dvs. este: " + scor);
+
+                this.Hide();
+                lnc.Show();
+
+            }
+
+            if (scor > 100)
+                timer1.Interval = 275;
+            if (scor > 200)
+                timer1.Interval = 250;
+            if (scor > 300)
+                timer1.Interval = 200;
+            if (scor > 400)
+                timer1.Interval = 175;
+            if (scor > 500)
+                timer1.Interval = 150;
+            if (scor > 600)
+                timer1.Interval = 135;
+            if (scor > 800)
+                timer1.Interval = 95;
+            if (scor > 1000)
+                timer1.Interval = 50;
+
+
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            generarePiesaRandom();
+            GenerarePiesaRandom();
 
             timer1.Start();
 
@@ -53,7 +89,7 @@ namespace Tetris
 
 
 
-        public void generarePiesaRandom()
+        public void GenerarePiesaRandom()
         {
             /*---------------------------------------------------------------------------
                  DESCRIPTION: - va genera la intamplare o piesa din cele 5.
@@ -98,34 +134,6 @@ namespace Tetris
             }
         }
 
-        public void drawTableBorder()
-        {
-            /*---------------------------------------------------------------------------
-                 DESCRIPTION: - va desena conturul tabei de joc.
-            ---------------------------------------------------------------------------*/
-            //pt partea de jos si sus:
-            for (int i = 0; i < 12; i++)
-            {
-                matrice[i, 21] = 1;
-                tableLayoutPanel1.GetControlFromPosition(i, 21).BackColor = Color.DarkGreen;
-                matrice[i, 0] = 1;
-                tableLayoutPanel1.GetControlFromPosition(i, 0).BackColor = Color.DarkGreen;
-
-            }
-
-
-            // pt partea din stanga si dreapta
-            for (int i = 0; i < 21; i++)
-            {
-                matrice[0, i] = 1;
-                tableLayoutPanel1.GetControlFromPosition(0, i).BackColor = Color.DarkGreen;
-
-                matrice[11, i] = 1;
-                tableLayoutPanel1.GetControlFromPosition(11, i).BackColor = Color.DarkGreen;
-
-
-            }
-        }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
@@ -133,11 +141,11 @@ namespace Tetris
 
             if (e.KeyCode == Keys.Right)
             {
-                piesa.mutaDreapta(this);
+                piesa.MutaDreapta(this);
             }
             if (e.KeyCode == Keys.Left)
             {
-                piesa.mutaStanga(this);
+                piesa.MutaStanga(this);
             }
             if (e.KeyCode == Keys.Up)
             {
@@ -145,7 +153,7 @@ namespace Tetris
             }
             if (e.KeyCode == Keys.Down)
             {
-                piesa.mutaJos(this);
+                piesa.MutaJos(this);
             }
             if (e.KeyCode == Keys.Escape)
             {
@@ -162,6 +170,5 @@ namespace Tetris
             lnc.Show();
         }
 
-       
     }
 }

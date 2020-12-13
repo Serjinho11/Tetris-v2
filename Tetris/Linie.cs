@@ -22,7 +22,7 @@ namespace Tetris
 
 
 
-        public override void rotirePiesaInPoz2(Game game)
+        public override void RotirePiesaInPoz2(Game game)
         {
             /*
                                      1
@@ -50,7 +50,7 @@ namespace Tetris
 
         }
 
-        public override void rotirePiesaInPoz1(Game game)
+        public override void RotirePiesaInPoz1(Game game)
         {
             if (VerificaDacaPoz1ELibera(game))
             {
@@ -78,9 +78,9 @@ namespace Tetris
 
 
             if (pozitiePiesa == 1)
-                rotirePiesaInPoz2(game);
+                RotirePiesaInPoz2(game);
             else
-                rotirePiesaInPoz1(game);
+                RotirePiesaInPoz1(game);
         }
 
 

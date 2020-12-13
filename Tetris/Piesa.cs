@@ -11,11 +11,12 @@ namespace Tetris
     class Piesa
     {
 
-        protected int x1, y1;
-        protected int x2, y2;
-        protected int x3, y3;
-        protected int x4, y4;
+        public int x1, y1;
+        public int x2, y2;
+        public int x3, y3;
+        public int x4, y4;
 
+        public bool stateOfPiece = true;// true inseamna ca inca se misca
 
         public void PozInit(Game game)
         {
@@ -33,7 +34,7 @@ namespace Tetris
 
 
 
-        public void mutaJos(Game game)
+        public void MutaJos(Game game)
         {
             /*---------------------------------------------------------------------------
                  DESCRIPTION: - va verifica daca urmatoarea pozitie de jos a piesei este libera,
@@ -49,8 +50,10 @@ namespace Tetris
             game.matrice[x3, y3] = 0;
             game.matrice[x4, y4] = 0;
 
+            stateOfPiece = true;
 
-            if (verificaUrmPozitieJos(game))
+
+            if (VerificaUrmPozitieJos(game))
             {
 
 
@@ -68,26 +71,29 @@ namespace Tetris
 
                 game.lblScor.Text = game.scor.ToString();
 
-                
+                stateOfPiece = false;
+
+
 
 
             }
             else
             {
-                
-                game.timer1.Stop();
 
-                game.generarePiesaRandom();
+                //game.timer1.Stop();
+
+                game.GenerarePiesaRandom();
 
                 PozInit(game);
 
-                game.timer1.Start();
+                //game.timer1.Start();
 
+                stateOfPiece = true;
             }
-            
+
         }
 
-        public void mutaDreapta(Game game)
+        public void MutaDreapta(Game game)
         {
             /*---------------------------------------------------------------------------
                  DESCRIPTION: - va verifica daca pozitia din dreapta piesei este libera,
@@ -103,7 +109,7 @@ namespace Tetris
             game.matrice[x4, y4] = 0;
 
 
-            if (verificaUrmPozitieDreapta(game))
+            if (VerificaUrmPozitieDreapta(game))
             {
                 StergePiesaCurentaV2(game);
 
@@ -115,7 +121,7 @@ namespace Tetris
             }
         }
 
-        public void mutaStanga(Game game)
+        public void MutaStanga(Game game)
         {
             /*---------------------------------------------------------------------------
                  DESCRIPTION: - va verifica daca pozitia din stanga piesei este libera,
@@ -129,7 +135,7 @@ namespace Tetris
             game.matrice[x4, y4] = 0;
 
 
-            if (verificaUrmPozitieStanga(game))
+            if (VerificaUrmPozitieStanga(game))
             {
                 StergePiesaCurentaV2(game);
 
@@ -144,7 +150,7 @@ namespace Tetris
 
 
 
-        public bool verificaUrmPozitieJos(Game game)
+        public bool VerificaUrmPozitieJos(Game game)
         {
             /*---------------------------------------------------------------------------
                  DESCRIPTION: - va verifica daca urmatoarea pozitie de jos a piesei este 
@@ -167,7 +173,7 @@ namespace Tetris
             return eLiber;
         }
 
-        public bool verificaUrmPozitieDreapta(Game game)
+        public bool VerificaUrmPozitieDreapta(Game game)
         {
             /*---------------------------------------------------------------------------
                  DESCRIPTION: - va verifica daca pozitia din dreapta piesei este libera.
@@ -187,7 +193,7 @@ namespace Tetris
             return eLiber;
         }
 
-        public bool verificaUrmPozitieStanga(Game game)
+        public bool VerificaUrmPozitieStanga(Game game)
         {
             /*---------------------------------------------------------------------------
                  DESCRIPTION: - va verifica daca pozitia din stanga piesei este libera.
@@ -261,13 +267,13 @@ namespace Tetris
 
 
 
-        public virtual void rotirePiesaInPoz2(Game game) { }
+        public virtual void RotirePiesaInPoz2(Game game) { }
 
-        public virtual void rotirePiesaInPoz1(Game game) { }
+        public virtual void RotirePiesaInPoz1(Game game) { }
 
-        public virtual void rotirePiesaInPoz3(Game game) { }
+        public virtual void RotirePiesaInPoz3(Game game) { }
 
-        public virtual void rotirePiesaInPoz4(Game game) { }
+        public virtual void RotirePiesaInPoz4(Game game) { }
 
         public virtual void RotirePiesa(Game game) { }
 

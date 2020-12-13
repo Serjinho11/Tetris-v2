@@ -23,7 +23,7 @@ namespace Tetris
 
 
 
-        public override void rotirePiesaInPoz2(Game game)
+        public override void RotirePiesaInPoz2(Game game)
         {
             /*
                    1                  
@@ -49,7 +49,7 @@ namespace Tetris
             }
         }
 
-        public override void rotirePiesaInPoz3(Game game)
+        public override void RotirePiesaInPoz3(Game game)
         {
             /*
                  3 2 1  --->    4 3
@@ -74,7 +74,7 @@ namespace Tetris
             }
         }
 
-        public override void rotirePiesaInPoz4(Game game)
+        public override void RotirePiesaInPoz4(Game game)
         {
             /*
                    4 3            4
@@ -100,7 +100,7 @@ namespace Tetris
             }
         }
 
-        public override void rotirePiesaInPoz1(Game game)
+        public override void RotirePiesaInPoz1(Game game)
         {
             /*                   1
                     4     --->   2
@@ -131,13 +131,13 @@ namespace Tetris
         public override void RotirePiesa(Game game)
         {
             if (pozitiePiesa == 1)
-                rotirePiesaInPoz2(game);
+                RotirePiesaInPoz2(game);
             else if (pozitiePiesa == 2)
-                rotirePiesaInPoz3(game);
+                RotirePiesaInPoz3(game);
             else if (pozitiePiesa == 3)
-                rotirePiesaInPoz4(game);
+                RotirePiesaInPoz4(game);
             else
-                rotirePiesaInPoz1(game);
+                RotirePiesaInPoz1(game);
         }
 
 
