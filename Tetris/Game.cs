@@ -14,82 +14,162 @@ namespace Tetris
     public partial class Game : Form
     {
         Launcher lnc;
-
-        Patrat patrat;
-        Linie linie;
-        T t;
-        L l;
-
         Piesa piesa;
+        Tabel tabel;
 
+        public int scor = 0;
+
+        Random rd = new Random();
         int nrRand;
+        public int[,] matrice = new int[12, 22]; // toate elementele sunt initializate cu 0
+
+
 
         public Game(Launcher launcher)
         {
+
             InitializeComponent();
             lnc = launcher;
+            tabel = new Tabel();
+            tabel.DrawTableBorder(this);
+
+
         }
 
         public Game() { }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            lnc.Show();
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            // patrat = new Patrat();
-            // patrat.mutaJos(this);
+            piesa.MutaJos(this);
 
+            if (piesa.stateOfPiece == false)
+            {
+                tabel.StergeLinieDacaECompleta(this, piesa);
+            }
 
-            //linie = new Linie();
-            //linie.mutaJos(this);
+            if (tabel.GameOver(this))
+            {
+                //timer1.Interval = 100000000;
+                timer1.Enabled = false;
+                MessageBox.Show("GAME OVER \n Scorul dvs. este: " + scor);
 
-            piesa.mutaJos(this);
+                this.Hide();
+                lnc.Show();
+
+            }
+
+            if (scor > 100)
+                timer1.Interval = 275;
+            if (scor > 200)
+                timer1.Interval = 250;
+            if (scor > 300)
+                timer1.Interval = 200;
+            if (scor > 400)
+                timer1.Interval = 175;
+            if (scor > 500)
+                timer1.Interval = 150;
+            if (scor > 600)
+                timer1.Interval = 135;
+            if (scor > 800)
+                timer1.Interval = 95;
+            if (scor > 1000)
+                timer1.Interval = 50;
 
 
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
+            GenerarePiesaRandom();
 
-            Random rd = new Random();
-            nrRand = rd.Next(1, 6);//genereaza un nr random intre 1 si 5
+            timer1.Start();
+
+            btnPlay.Enabled = false;
+        }
+
+
+
+        public void GenerarePiesaRandom()
+        {
+            /*---------------------------------------------------------------------------
+                 DESCRIPTION: - va genera la intamplare o piesa din cele 5.
+            ---------------------------------------------------------------------------*/
+
+            nrRand = rd.Next(1, 8);//genereaza un nr random intre 1 si 7
 
             if (nrRand == 1)
             {
                 piesa = new Patrat();
-                piesa.pozInit(this);
+                piesa.PozInit(this);
             }
             else if (nrRand == 2)
             {
                 piesa = new Linie();
-                piesa.pozInit(this);
+                piesa.PozInit(this);
             }
             else if (nrRand == 3)
             {
                 piesa = new T();
-                piesa.pozInit(this);
+                piesa.PozInit(this);
             }
             else if (nrRand == 4)
             {
                 piesa = new L();
-                piesa.pozInit(this);
+                piesa.PozInit(this);
+            }
+            else if (nrRand == 5)
+            {
+                piesa = new Patru();
+                piesa.PozInit(this);
+            }
+            else if (nrRand == 6)
+            {
+                piesa = new J();
+                piesa.PozInit(this);
             }
             else
             {
-                piesa = new Patru();
-                piesa.pozInit(this);
+                piesa = new PatruIntors();
+                piesa.PozInit(this);
             }
-
-
-            timer1.Start();
-
-            //timer1.Stop();
-
         }
+
+
+        private void Game_KeyDown(object sender, KeyEventArgs e)
+        {
+
+
+            if (e.KeyCode == Keys.Right)
+            {
+                piesa.MutaDreapta(this);
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                piesa.MutaStanga(this);
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                piesa.RotirePiesa(this);
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                piesa.MutaJos(this);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Hide();
+                lnc.Show();
+            }
+        }
+
+
+
+        private void label267_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            lnc.Show();
+        }
+
     }
 }

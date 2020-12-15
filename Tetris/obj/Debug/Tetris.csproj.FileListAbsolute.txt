@@ -8,3 +8,23 @@ D:\Cursuri anul 2\Anul 2 Sergiu\OOP\Tetris\obj\Debug\Tetris.csproj.GenerateResou
 D:\Cursuri anul 2\Anul 2 Sergiu\OOP\Tetris\obj\Debug\Tetris.exe
 D:\Cursuri anul 2\Anul 2 Sergiu\OOP\Tetris\obj\Debug\Tetris.pdb
 D:\Cursuri anul 2\Anul 2 Sergiu\OOP\Tetris\obj\Debug\Tetris.Game.resources
+C:\Users\Sergiu\Desktop\Tetris-v2-Serjinho11-patch-1\Tetris\bin\Debug\Tetris.exe.config
+C:\Users\Sergiu\Desktop\Tetris-v2-Serjinho11-patch-1\Tetris\bin\Debug\Tetris.exe
+C:\Users\Sergiu\Desktop\Tetris-v2-Serjinho11-patch-1\Tetris\bin\Debug\Tetris.pdb
+C:\Users\Sergiu\Desktop\Tetris-v2-Serjinho11-patch-1\Tetris\obj\Debug\Tetris.csprojAssemblyReference.cache
+C:\Users\Sergiu\Desktop\Tetris-v2-Serjinho11-patch-1\Tetris\obj\Debug\Tetris.Game.resources
+C:\Users\Sergiu\Desktop\Tetris-v2-Serjinho11-patch-1\Tetris\obj\Debug\Tetris.Launcher.resources
+C:\Users\Sergiu\Desktop\Tetris-v2-Serjinho11-patch-1\Tetris\obj\Debug\Tetris.Properties.Resources.resources
+C:\Users\Sergiu\Desktop\Tetris-v2-Serjinho11-patch-1\Tetris\obj\Debug\Tetris.csproj.GenerateResource.cache
+C:\Users\Sergiu\Desktop\Tetris-v2-Serjinho11-patch-1\Tetris\obj\Debug\Tetris.exe
+C:\Users\Sergiu\Desktop\Tetris-v2-Serjinho11-patch-1\Tetris\obj\Debug\Tetris.pdb
+C:\Users\Sergiu\Desktop\Tetris Working bench\Tetris\bin\Debug\Tetris.exe.config
+C:\Users\Sergiu\Desktop\Tetris Working bench\Tetris\bin\Debug\Tetris.exe
+C:\Users\Sergiu\Desktop\Tetris Working bench\Tetris\bin\Debug\Tetris.pdb
+C:\Users\Sergiu\Desktop\Tetris Working bench\Tetris\obj\Debug\Tetris.csprojAssemblyReference.cache
+C:\Users\Sergiu\Desktop\Tetris Working bench\Tetris\obj\Debug\Tetris.Game.resources
+C:\Users\Sergiu\Desktop\Tetris Working bench\Tetris\obj\Debug\Tetris.Launcher.resources
+C:\Users\Sergiu\Desktop\Tetris Working bench\Tetris\obj\Debug\Tetris.Properties.Resources.resources
+C:\Users\Sergiu\Desktop\Tetris Working bench\Tetris\obj\Debug\Tetris.csproj.GenerateResource.cache
+C:\Users\Sergiu\Desktop\Tetris Working bench\Tetris\obj\Debug\Tetris.exe
+C:\Users\Sergiu\Desktop\Tetris Working bench\Tetris\obj\Debug\Tetris.pdb
