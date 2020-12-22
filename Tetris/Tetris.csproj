@@ -52,6 +52,13 @@
     <Compile Include="Game.Designer.cs">
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
+    <Compile Include="Instructions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Instructions.Designer.cs">
+      <DependentUpon>Instructions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="J.cs" />
     <Compile Include="L.cs" />
     <Compile Include="Launcher.cs">
       <SubType>Form</SubType>
@@ -62,12 +69,17 @@
     <Compile Include="Linie.cs" />
     <Compile Include="Patrat.cs" />
     <Compile Include="Patru.cs" />
+    <Compile Include="PatruIntors.cs" />
     <Compile Include="Piesa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="T.cs" />
+    <Compile Include="Tabel.cs" />
     <EmbeddedResource Include="Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Instructions.resx">
+      <DependentUpon>Instructions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Launcher.resx">
       <DependentUpon>Launcher.cs</DependentUpon>
@@ -133,6 +145,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\start2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tetris Launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tetris Launcher2.0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red-abstract.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TetrisLauncherFinal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TetrisLauncherFinal2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tetrislncfin3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TetrisLncFinal5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instructions.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,51 +7,169 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    class Patru:Piesa
+    class Patru : Piesa
     {
-
-        //coordonatele fiecarei celule
-        public int x1 = 4, y1 = 0;//prima celula din patru                ex:   1
-        public int x2 = 4, y2 = 1;//a 2a celula din patru                       2 3
-        public int x3 = 5, y3 = 1;//a 3a celula din patru                         4
-        public int x4 = 5, y4 = 2;//a 4a celula din patru                       
+        int pozitiePiesa = 1;
 
         public Patru()
         {
-            this.NumePiesa = "Patru";
-            this.Culoare = "Rosu";
+            x1 = 5; y1 = 1;//prima celula din patru                ex:   1
+            x2 = 5; y2 = 2;//a 2a celula din patru                       2 3
+            x3 = 6; y3 = 2;//a 3a celula din patru                         4
+            x4 = 6; y4 = 3;//a 4a celula din patru  
+        }
+
+        public override void RotirePiesaInPoz2(Game game)
+        {
+            if (VerificaDacaPoz2ELibera(game))
+            {
+                pozitiePiesa = 2;
+
+                this.StergePiesaCurenta(game);
+
+
+                //roteste piesa
+                x1++; y1++;
+                x3--; y3++;
+                x4 = x4 - 2;
+
+                this.ColoreazaPiesaCurenta(game);
+            }
+        }
+
+        public override void RotirePiesaInPoz3(Game game)
+        {
+            if (VerificaDacaPoz3ELibera(game))
+            {
+                pozitiePiesa = 3;
+
+                this.StergePiesaCurenta(game);
+
+
+                //roteste piesa
+                x1 = x1 - 2; y1--;
+                x2--;
+                y3--;
+                x4++;
+
+                this.ColoreazaPiesaCurenta(game);
+            }
+        }
+
+        public override void RotirePiesaInPoz4(Game game)
+        {
+            if (VerificaDacaPoz4ELibera(game))
+            {
+                pozitiePiesa = 4;
+
+                this.StergePiesaCurenta(game);
+
+
+                //roteste piesa
+                x1 = x1 + 2;
+                x2++; y2--;
+                x4--; y4--;
+
+                this.ColoreazaPiesaCurenta(game);
+            }
+        }
+
+        public override void RotirePiesaInPoz1(Game game)
+        {
+            if (VerificaDacaPoz1ELibera(game))
+            {
+                pozitiePiesa = 1;
+
+                this.StergePiesaCurenta(game);
+
+
+                //roteste piesa
+                x1--;
+                y2++;
+                x3++;
+                x4 = x4 + 2; y4++;
+
+
+                this.ColoreazaPiesaCurenta(game);
+            }
+
+
+        }
+
+        public override void RotirePiesa(Game game)
+        {
+            if (pozitiePiesa == 1)
+                RotirePiesaInPoz2(game);
+            else if (pozitiePiesa == 2)
+                RotirePiesaInPoz3(game);
+            else if (pozitiePiesa == 3)
+                RotirePiesaInPoz4(game);
+            else
+                RotirePiesaInPoz1(game);
         }
 
 
-        public override void pozInit(Game game)
+        // verificarile daca se poate roti piesa
+
+        public override bool VerificaDacaPoz2ELibera(Game game)
         {
-            /*---------------------------------------------------------------------------
-             DESCRIPTION: - va desena linia in pozitia initiala
-            ---------------------------------------------------------------------------*/
-            game.tableLayoutPanel1.GetControlFromPosition(x1, y1).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x2, y2).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x3, y3).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x4, y4).BackColor = Color.Red;
+            bool eLiber = false;
+            if (
+                game.matrice[x3 - 1, y3 + 1] == 0 &&
+                game.matrice[x4 - 2, y4] == 0
+                )
+            {
+                eLiber = true;
+            }
+
+            return eLiber;
+        }
+
+        public override bool VerificaDacaPoz3ELibera(Game game)
+        {
+            bool eLiber = false;
+            if (
+                game.matrice[x1 - 2, y1 - 1] == 0 &&
+                game.matrice[x2 - 1, y2] == 0
+                )
+            {
+                eLiber = true;
+            }
+
+            return eLiber;
+
 
         }
 
-        public override void mutaJos(Game game)
+        public override bool VerificaDacaPoz4ELibera(Game game)
         {
 
-            //stergerea patratului din cercul curent
-            game.tableLayoutPanel1.GetControlFromPosition(x1, y1).BackColor = Color.Blue;
-            game.tableLayoutPanel1.GetControlFromPosition(x2, y2).BackColor = Color.Blue;
-            game.tableLayoutPanel1.GetControlFromPosition(x3, y3).BackColor = Color.Blue;
-            game.tableLayoutPanel1.GetControlFromPosition(x4, y4).BackColor = Color.Blue;
+            bool eLiber = false;
+            if (
+                game.matrice[x1 + 2, y1] == 0 &&
+                game.matrice[x2 + 1, y2 - 1] == 0
+                )
+            {
+                eLiber = true;
+            }
 
-            //mutam cu un rand mai jos
-            y1++; y2++; y3++; y4++;
+            return eLiber;
 
-            //redesenarea cu un rand mai jos
-            game.tableLayoutPanel1.GetControlFromPosition(x1, y1).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x2, y2).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x3, y3).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x4, y4).BackColor = Color.Red;
+        }
+
+        public override bool VerificaDacaPoz1ELibera(Game game)
+        {
+            bool eLiber = false;
+            if (
+                game.matrice[x3 + 1, y3] == 0 &&
+                game.matrice[x4 + 2, y4 + 1] == 0
+                )
+            {
+                eLiber = true;
+            }
+
+            return eLiber;
+
         }
 
     }
