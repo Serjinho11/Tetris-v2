@@ -130,17 +130,23 @@
   <data name="logo_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TetrisLauncherFinal2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TetrisLauncherFinal2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pinterest_profile_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pinterest_profile_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="play now" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\play now.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TetrisLncFinal5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TetrisLncFinal5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Instructions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Instructions.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tetris v2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tetris v2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tetris Launcher2.0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tetris Launcher2.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LauncherBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LauncherBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tetris wallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tetris wallpaper.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,20 +160,20 @@
   <data name="Tetrislncfin3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tetrislncfin3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tetris Launcher" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tetris Launcher.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="InstructionsBackgroung" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InstructionsBackgroung.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="start1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\start1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="1205476" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1205476.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tetris Launcher" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tetris Launcher.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="red-abstract" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\red-abstract.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tetris Launcher2.0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tetris Launcher2.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tetris v2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tetris v2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="start button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\start button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,10 +181,13 @@
   <data name="4076066" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\4076066.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TetrisLauncherFinal2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TetrisLauncherFinal2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1205476" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1205476.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Instructions" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Instructions.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="TetrisLncFinal5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TetrisLncFinal5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GameBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GameBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
