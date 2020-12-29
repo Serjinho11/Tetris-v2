@@ -7,50 +7,119 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    class Linie:Piesa
+    class Linie : Piesa
     {
-        //coordonatele fiecarei celule
-        public int x1 = 3, y1 = 0;//prima celula din patrat                ex:
-        public int x2 = 4, y2 = 0;//a 2a celula din patrat                     1 2 3 4 
-        public int x3 = 5, y3 = 0;//a 3a celula din patrat                     
-        public int x4 = 6, y4 = 0;//a 4a celula din patrat
+
+        int pozitiePiesa = 1;
+        public int PozitiePiesa { get => pozitiePiesa; set => pozitiePiesa = value; }
+
+
+        #region Metode
 
         public Linie()
         {
-            this.NumePiesa = "Patrat";
-            this.Culoare = "Rosu";
+            pP_X1 = 4; pP_Y1 = 1;//prima celula din linie                ex: x
+            pP_X2 = 5; pP_Y2 = 1;//a 2a celula din linie                  y  1 2 3 4 
+            pP_X3 = 6; pP_Y3 = 1;//a 3a celula din linie                     
+            pP_X4 = 7; pP_Y4 = 1;//a 4a celula din linie
         }
 
 
-        public override void pozInit(Game game)
+
+        public override void fP_RotirePiesaInPoz2(Game game)
         {
-            /*---------------------------------------------------------------------------
-             DESCRIPTION: - va desena linia in pozitia initiala
-            ---------------------------------------------------------------------------*/
-            game.tableLayoutPanel1.GetControlFromPosition(x1, y1).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x2, y2).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x3, y3).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x4, y4).BackColor = Color.Red;
+            /*
+                                     1
+                1 2 3 4   --->       2
+                                     3
+                                     4
+            */
+            if (fP_VerificaDacaPoz2ELibera(game))
+            {
+                PozitiePiesa = 2;
+
+                this.fP_StergePiesaCurenta(game);
+
+
+                //roteste piesa
+                pP_X1 = pP_X1 + 2; pP_Y1 = pP_Y1 - 2;
+                pP_X2++; pP_Y2--;
+                //x3 si y3 raman la fel
+                pP_X4--; pP_Y4++;
+
+
+                this.fP_ColoreazaPiesaCurenta(game);
+            }
+
 
         }
 
-        public override void mutaJos(Game game)
+        public override void fP_RotirePiesaInPoz1(Game game)
         {
+            if (fP_VerificaDacaPoz1ELibera(game))
+            {
+                PozitiePiesa = 1;
+                this.fP_StergePiesaCurenta(game);
 
-            //stergerea patratului din cercul curent
-            game.tableLayoutPanel1.GetControlFromPosition(x1, y1).BackColor = Color.Blue;
-            game.tableLayoutPanel1.GetControlFromPosition(x2, y2).BackColor = Color.Blue;
-            game.tableLayoutPanel1.GetControlFromPosition(x3, y3).BackColor = Color.Blue;
-            game.tableLayoutPanel1.GetControlFromPosition(x4, y4).BackColor = Color.Blue;
 
-            //mutam cu un rand mai jos
-            y1++; y2++; y3++; y4++;
+                //roteste piesa
+                pP_X1 = pP_X1 - 2; pP_Y1 = pP_Y1 + 2;
+                pP_X2--; pP_Y2++;
+                //x3 si y3 raman la fel
+                pP_X4++; pP_Y4--;
 
-            //redesenarea cu un rand mai jos
-            game.tableLayoutPanel1.GetControlFromPosition(x1, y1).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x2, y2).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x3, y3).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x4, y4).BackColor = Color.Red;
+
+                this.fP_ColoreazaPiesaCurenta(game);
+            }
+
         }
+
+
+        public override void fP_RotirePiesa(Game game)
+        {
+            //trebuie sa fac o functie care sa verifice cumva daca rotirea este posibila
+
+
+
+            if (PozitiePiesa == 1)
+                fP_RotirePiesaInPoz2(game);
+            else
+                fP_RotirePiesaInPoz1(game);
+        }
+
+
+        public override bool fP_VerificaDacaPoz2ELibera(Game game)
+        {
+            bool eLiber = false;
+
+            if (game.pG_Matrice[pP_X2 + 1, pP_Y2 - 1] == 0)// acest if este pt cand se genereaza o linie si ii dam pe rotire
+            {                                     // cand e sus de tot, fara asta ne da o exceptie
+                if (game.pG_Matrice[pP_X1 + 2, pP_Y1 - 2] == 0 &&
+                    game.pG_Matrice[pP_X2 + 1, pP_Y2 - 1] == 0 &&
+                    // game.matrice[x3, y3] == 0 &&
+                    game.pG_Matrice[pP_X4 - 1, pP_Y4 + 1] == 0)
+                {
+                    eLiber = true;
+                }
+            }
+            return eLiber;
+        }
+
+        public override bool fP_VerificaDacaPoz1ELibera(Game game)
+        {
+            bool eLiber = false;
+            if (game.pG_Matrice[pP_X2 - 1, pP_Y2 + 1] == 0 && game.pG_Matrice[pP_X4 + 1, pP_Y4 - 1] == 0)//prima data verifica daca celula 2 si 4 e libera, altfel mai sunt niste exceptii
+            {                                                                          // pt ca ar accesa celule din afara matricei
+                if (game.pG_Matrice[pP_X1 - 2, pP_Y1 + 2] == 0 &&
+                game.pG_Matrice[pP_X2 - 1, pP_Y2 + 1] == 0 &&
+                game.pG_Matrice[pP_X4 + 1, pP_Y4 - 1] == 0)
+                    eLiber = true;
+            }
+
+
+            return eLiber;
+        }
+        #endregion
+
     }
 }

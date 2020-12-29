@@ -7,50 +7,205 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    class L:Piesa
+    class L : Piesa
     {
-        //coordonatele fiecarei celule
-        public int x1 = 5, y1 = 0;//prima celula din patrat                ex:   1
-        public int x2 = 5, y2 = 1;//a 2a celula din patrat                       2
-        public int x3 = 5, y3 = 2;//a 3a celula din patrat                       3 4
-        public int x4 = 6, y4 = 2;//a 4a celula din patrat                       
+        int pozitiePiesa = 1;
+        public int PozitiePiesa { get => pozitiePiesa; set => pozitiePiesa = value; }
+
+        #region Metode
 
         public L()
         {
-            this.NumePiesa = "L";
-            this.Culoare = "Rosu";
+            pP_X1 = 6; pP_Y1 = 1;//prima celula din L                ex: 1
+            pP_X2 = 6; pP_Y2 = 2;//a 2a celula din L                     2
+            pP_X3 = 6; pP_Y3 = 3;//a 3a celula din L                     3 4
+            pP_X4 = 7; pP_Y4 = 3;//a 4a celula din L
         }
 
 
-        public override void pozInit(Game game)
+
+
+
+        public override void fP_RotirePiesaInPoz2(Game game)
         {
-            /*---------------------------------------------------------------------------
-             DESCRIPTION: - va desena linia in pozitia initiala
-            ---------------------------------------------------------------------------*/
-            game.tableLayoutPanel1.GetControlFromPosition(x1, y1).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x2, y2).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x3, y3).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x4, y4).BackColor = Color.Red;
+            /*
+                   1                  
+                   2           --->    3 2 1 
+                   3 4                 4 
+                                     
+            */
+            if (fP_VerificaDacaPoz2ELibera(game))
+            {
+                PozitiePiesa = 2;
 
+                this.fP_StergePiesaCurenta(game);
+
+
+                //roteste piesa
+                pP_X1 = pP_X1 + 2; pP_Y1 = pP_Y1 + 1;
+                pP_X2++; // y2 ramane la fel
+                pP_Y3--; // x3 ramane la fel
+                pP_X4--; // y4 ramane la fel
+
+
+                this.fP_ColoreazaPiesaCurenta(game);
+            }
         }
 
-        public override void mutaJos(Game game)
+        public override void fP_RotirePiesaInPoz3(Game game)
         {
+            /*
+                 3 2 1  --->    4 3
+                 4                2
+                                  1
+                                     
+            */
+            if (fP_VerificaDacaPoz3ELibera(game))
+            {
+                PozitiePiesa = 3;
 
-            //stergerea patratului din cercul curent
-            game.tableLayoutPanel1.GetControlFromPosition(x1, y1).BackColor = Color.Blue;
-            game.tableLayoutPanel1.GetControlFromPosition(x2, y2).BackColor = Color.Blue;
-            game.tableLayoutPanel1.GetControlFromPosition(x3, y3).BackColor = Color.Blue;
-            game.tableLayoutPanel1.GetControlFromPosition(x4, y4).BackColor = Color.Blue;
+                this.fP_StergePiesaCurenta(game);
 
-            //mutam cu un rand mai jos
-            y1++; y2++; y3++; y4++;
 
-            //redesenarea cu un rand mai jos
-            game.tableLayoutPanel1.GetControlFromPosition(x1, y1).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x2, y2).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x3, y3).BackColor = Color.Red;
-            game.tableLayoutPanel1.GetControlFromPosition(x4, y4).BackColor = Color.Red;
+                //roteste piesa
+                pP_X1--; pP_Y1 = pP_Y1 + 2;
+                pP_Y2++; // y2 ramane la fel
+                pP_X3++; // y3 ramane la fel
+                pP_Y4--; // x4 ramane la fel
+
+                this.fP_ColoreazaPiesaCurenta(game);
+            }
         }
+
+        public override void fP_RotirePiesaInPoz4(Game game)
+        {
+            /*
+                   4 3            4
+                     2  --->  1 2 3
+                     1
+
+           */
+            if (fP_VerificaDacaPoz4ELibera(game))
+            {
+                PozitiePiesa = 4;
+
+                this.fP_StergePiesaCurenta(game);
+
+
+                //roteste piesa
+                pP_X1 = pP_X1 - 2; pP_Y1--;
+                pP_X2--; // y2 ramane la fel
+                pP_Y3++; // x3 ramane la fel
+                pP_X4++; // y4 ramane la fel
+
+
+                this.fP_ColoreazaPiesaCurenta(game);
+            }
+        }
+
+        public override void fP_RotirePiesaInPoz1(Game game)
+        {
+            /*                   1
+                    4     --->   2
+                1 2 3            3 4
+
+
+          */
+            if (fP_VerificaDacaPoz1ELibera(game))
+            {
+                PozitiePiesa = 1;
+
+                this.fP_StergePiesaCurenta(game);
+
+
+                //roteste piesa
+                pP_X1++; pP_Y1 = pP_Y1 - 2;
+                pP_Y2--; // x2 ramane la fel
+                pP_X3--; // y3 ramane la fel
+                pP_Y4++; // x4 ramane la fel
+
+
+                this.fP_ColoreazaPiesaCurenta(game);
+            }
+
+
+        }
+
+        public override void fP_RotirePiesa(Game game)
+        {
+            if (PozitiePiesa == 1)
+                fP_RotirePiesaInPoz2(game);
+            else if (PozitiePiesa == 2)
+                fP_RotirePiesaInPoz3(game);
+            else if (PozitiePiesa == 3)
+                fP_RotirePiesaInPoz4(game);
+            else
+                fP_RotirePiesaInPoz1(game);
+        }
+
+
+        //verificarile daca se poate roti piesa
+
+        public override bool fP_VerificaDacaPoz2ELibera(Game game)
+        {
+            bool eLiber = false;
+
+            if (game.pG_Matrice[pP_X1 + 2, pP_Y1 + 1] == 0 &&
+                game.pG_Matrice[pP_X2 + 1, pP_Y2] == 0
+                )
+            {
+                eLiber = true;
+            }
+
+            return eLiber;
+        }
+
+        public override bool fP_VerificaDacaPoz3ELibera(Game game)
+        {
+            bool eLiber = false;
+
+            if (game.pG_Matrice[pP_X1 - 1, pP_Y1 + 2] == 0 &&
+                game.pG_Matrice[pP_X2, pP_Y2 + 1] == 0
+                )
+            {
+                eLiber = true;
+            }
+
+            return eLiber;
+
+
+        }
+
+        public override bool fP_VerificaDacaPoz4ELibera(Game game)
+        {
+            bool eLiber = false;
+
+            if (game.pG_Matrice[pP_X1 - 2, pP_Y1 - 1] == 0 &&
+                game.pG_Matrice[pP_X2 - 1, pP_Y2] == 0
+                )
+            {
+                eLiber = true;
+            }
+
+            return eLiber;
+
+        }
+
+        public override bool fP_VerificaDacaPoz1ELibera(Game game)
+        {
+            bool eLiber = false;
+
+            if (game.pG_Matrice[pP_X1 + 1, pP_Y1 - 2] == 0 &&
+                game.pG_Matrice[pP_X2, pP_Y2 - 1] == 0
+                )
+            {
+                eLiber = true;
+            }
+
+            return eLiber;
+
+        }
+        #endregion
+
     }
 }
